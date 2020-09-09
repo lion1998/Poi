@@ -1,64 +1,98 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/login.dart';
-import 'package:flutter_app/pages/signup.dart';
 
-class HomePage extends StatelessWidget {
+import './category.dart';
+import './discover.dart';
+import './profile.dart';
+import './search.dart';
+import './today.dart';
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _index = 0;
+  List<Widget> _pages = [TodayPage(), CategoryPage(), DiscoverPage(), SearchPage(), ProfilePage(),];
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/diamond.png',
-                height: 100,
-                width: 100,
-              ),
-              Container(
-                  padding: EdgeInsets.only(top: 50.0),
-                  child: Text(
-                    "Team Up",
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  )),
-              SizedBox(
-                height: 10.0,
-              ),
-              Text("My first application")
-            ],
-          ),
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('HomePage'),
         ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          color: Colors.purple,
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return LoginPage();
-                      }));
-                    },
-                    child: Text("Login".toUpperCase())),
-                InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return Signup();
-                      }));
-                    },
-                    child: Text("SignUp".toUpperCase()))
-              ],
-            ),
-          ),
+        body: Container(
+          margin: EdgeInsets.all(10.0),
+          child: _pages[_index],
         ),
+        bottomNavigationBar:
+            BottomNavigationBar(
+              currentIndex: _index,
+              onTap: (int index) {
+                setState(() {
+                  _index = index;
+                });
+              },
+              backgroundColor: Colors.black,  items: [
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.calendar_today,
+                color: Colors.grey,
+              ),
+              title: Text(
+                'Today',
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              )),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.category,
+                color: Colors.grey,
+              ),
+              title: Text(
+                'Category',
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              )),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.star,
+                color: Colors.grey,
+              ),
+              title: Text(
+                'Discover',
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              )),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.search,
+                color: Colors.grey,
+              ),
+              title: Text(
+                'Search',
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              )),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.featured_play_list,
+                color: Colors.grey,
+              ),
+              title: Text(
+                'Profile',
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              )),
+        ]),
       ),
     );
   }
