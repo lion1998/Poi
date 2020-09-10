@@ -11,7 +11,8 @@ class App extends StatelessWidget {
       // home: WelcomePage(),
       routes: {
         '/': (BuildContext context) {
-          return WelcomePage();},
+          return WelcomePage();
+        },
         '/homepage': (BuildContext context) {
           return HomePage();
         }
