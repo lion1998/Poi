@@ -10,13 +10,12 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   // String _emailValue = '';
   // String _passwordValue = '';
-  String email = 'godson@gmail.com';
-  String password = '12345';
+  String email = 'g';
+  String password = '1';
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
   final _emailTextController = TextEditingController();
   final _passTextController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                       padding: EdgeInsets.only(top: 50.0),
                       child: Text(
                         "Team Up",
-                        style: TextStyle(
-                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                       )),
                   SizedBox(
                     height: 10.0,
@@ -62,9 +60,9 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         TextFormField(
                           validator: (String value) {
-                            if(value != '') {
+                            if (value != '') {
                               return null;
-                            } 
+                            }
                             return 'This field is required';
                           },
                           // onChanged: (String value) {
@@ -85,8 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         TextFormField(
                           validator: (String value) {
-                            if (value != '')
-                              return null;
+                            if (value != '') return null;
                             return 'This field is required';
                           },
                           // onChanged: (String value) {
@@ -95,11 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                           //   });
                           // },
                           controller: _passTextController,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40.0),
-                                  borderSide: BorderSide(width: 8.0)),
-                              hintText: 'Enter password'),
+                          decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(40.0), borderSide: BorderSide(width: 8.0)), hintText: 'Enter password'),
                           autofocus: false,
                           obscureText: true,
                         ),
@@ -132,7 +125,9 @@ class _LoginPageState extends State<LoginPage> {
 
                                       Navigator.pushReplacementNamed(context, '/homepage');
                                     } else {
-                                      _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text('Invalid email or password'),));
+                                      _scaffoldKey.currentState.showSnackBar(SnackBar(
+                                        content: Text('Invalid email or password'),
+                                      ));
                                     }
                                   }
                                 },

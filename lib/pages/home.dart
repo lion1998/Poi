@@ -13,7 +13,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   double _usizeIcon = 20;
-  double _ssizeIcon = 30;
+  double _usizeLetters = 15;
+  double _ssizeIcon = 35;
+  double _ssizeLetters = 20;
   int _index = 0;
   List<Widget> _pages = [
     TodayPage(),
@@ -37,16 +39,15 @@ class _HomePageState extends State<HomePage> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          selectedFontSize: 20,
+          selectedFontSize: _ssizeLetters,
           selectedIconTheme: IconThemeData(
-            color: Colors.blue,
             size: _ssizeIcon,
           ),
           unselectedIconTheme: IconThemeData(
             color: Colors.grey,
             size: _usizeIcon,
           ),
-          unselectedFontSize: 10,
+          unselectedFontSize: _usizeLetters,
           currentIndex: _index,
           showSelectedLabels: true,
           showUnselectedLabels: true,
